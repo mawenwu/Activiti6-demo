@@ -6,4 +6,6 @@
   <packaging>war</packaging>
   <name>Activiti</name>
   <description>Activiti 6 demo</description>
+  
+  
 </project>
