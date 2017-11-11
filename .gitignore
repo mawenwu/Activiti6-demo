@@ -1,1 +1,6 @@
-/target/
+.settings/
+target/
+.project
+.classpath
+bin/
+src/test/
