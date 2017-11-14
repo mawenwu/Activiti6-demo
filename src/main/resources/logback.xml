@@ -31,9 +31,6 @@
 	</root>
 
 	<logger name="com.mossle" level="info" />
-	<logger name="org.hibernate.engine.internal.StatisticalLoggingSessionEventListener" level="warn" />
 	<logger name="org.hibernate.hql.internal.ast.HqlSqlWalker" level="error" />
-	<logger name="org.springframework.security.access.event.LoggerListener" level="warn" />
-	<logger name="org.springframework.security.authentication.event.LoggerListener" level="warn" />
 	<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="warn" />
 </configuration>
