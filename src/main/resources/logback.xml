@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>
+				%d %5p [%t] %c:%L - %m%n
+			</Pattern>
+		</encoder>
+	</appender>
+	<property resource="application.properties" />
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logPaht}logs.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">  
+            <fileNamePattern>${logPaht}logs.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+			<maxHistory>10</maxHistory>
+	       	<totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+        
+        <encoder>
+        	<pattern>%d %5p [%t] %c:%L - %m%n</pattern>
+        </encoder>
+    </appender>
+	<!-- 日志级别 -->
+	<root>
+		<!-- 定义了ERROR和INFO级别的日志，分别在FILE文件和控制台输出 -->  
+        <level value="info" />
+        <!-- <level value="error" /> -->
+        <appender-ref ref="FILE" />
+        <appender-ref ref="CONSOLE" />
+	</root>
+
+	<logger name="com.mossle" level="info" />
+	<logger name="org.hibernate.engine.internal.StatisticalLoggingSessionEventListener" level="warn" />
+	<logger name="org.hibernate.hql.internal.ast.HqlSqlWalker" level="error" />
+	<logger name="org.springframework.security.access.event.LoggerListener" level="warn" />
+	<logger name="org.springframework.security.authentication.event.LoggerListener" level="warn" />
+	<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="warn" />
+</configuration>

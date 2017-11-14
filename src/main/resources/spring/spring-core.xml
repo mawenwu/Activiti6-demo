@@ -34,19 +34,21 @@
         <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
         <property name="minEvictableIdleTimeMillis" value="300000" />
         <!-- 申请连接的时候检测 -->
-        <property name="validationQuery" value="SELECT 'x'" />
+        <property name="validationQuery" value="SELECT 'x' FROM DUAL" />
         <property name="testWhileIdle" value="true" />
         <property name="testOnBorrow" value="false" />
         <property name="testOnReturn" value="false" />
         <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
       	<property name="poolPreparedStatements" value="true" />
-      	<property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+      	<property name="maxPoolPreparedStatementPerConnectionSize" value="100" />
       	<!-- 配置监控统计拦截的filters -->
-      	<property name="filters" value="stat" />
+      	<property name="filters" value="mergeStat" />
       	<!-- 合并SQL
       	<property name="connectionProperties" value="druid.stat.mergeSql=true" /> -->
-      	<!-- StatFilter的属性slowSqlMillis用来配置SQL慢的标准（ 慢SQL记录） 超过5秒表示SQL语句慢 -->
-      	<property name="connectionProperties" value="druid.stat.slowSqlMillis=5000" />
+      	<!-- StatFilter的属性slowSqlMillis用来配置SQL慢的标准（ 慢SQL记录） 超过3秒表示SQL语句慢 -->
+      	<property name="connectionProperties" value="druid.stat.slowSqlMillis=3000" />
+      	<!-- asyncInit是1.1.4中新增加的配置，如果有initialSize数量较多时，打开会加快应用启动时间 -->
+      	<property name="asyncInit" value="true" />
     </bean>
     
 	<!-- JpaVendorAdapter -->
